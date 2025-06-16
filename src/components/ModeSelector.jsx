@@ -31,7 +31,7 @@ const ModeSelector = ({ value, onModeChange }) => {
                 })}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ModeSelector;
