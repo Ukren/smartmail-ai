@@ -17,7 +17,7 @@ const App = () => {
     <div className="min-h-screen p-6 bg-gray-100 text-gray-800">
       <div className="max-w-3xl mx-auto space-y-4">
         <EmailInput email={email} onEmailChange={setEmail} />
-        <ModeSelector value={mode} onChange={setMode} />
+        <ModeSelector value={mode} onModeChange={setMode} />
         <Controls {...{ email, mode, setResult, setError, setLoading }} />
         {loading ? <Loader /> : null}
         {result ? <OutputBlock result={result} /> : null}
