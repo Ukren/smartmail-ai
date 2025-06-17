@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { generateEmail } from "./api/openai";
 import EmailInput from "./components/EmailInput";
 import ModeSelector from "./components/ModeSelector";
 import Controls from "./components/Controls";
@@ -15,7 +16,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (!email.trim()) {
       setError("Please enter some text.");
       return;
@@ -35,11 +36,15 @@ const App = () => {
     setError(null);
     setResult("");
 
-    //To be done with AI
-    setTimeout(() => {
-      setResult(`[Generated (${mode}) version of your email here...]`);
+    try {
+      const aiResult = await generateEmail(email, mode);
+      setResult(aiResult);
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong while contacting the AI.");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const handleClear = () => {
@@ -83,7 +88,7 @@ Your Test Assistant`
           </div>
         </div>
 
-        <ModeSelector value={mode} onChange={setMode} />
+        <ModeSelector value={mode} onModeChange={setMode} />
 
         {loading && <Loader />}
         {result && <OutputBlock result={result} />}
