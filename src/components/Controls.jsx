@@ -1,34 +1,34 @@
 const Controls = ({ email, mode, loading, onGenerate, onClear, onInsertSample }) => {
-    const isDisabled = !email || !mode || loading;
+  const isDisabled = !email || !mode || loading;
 
-    return (
-        <div className="flex flex-col gap-y-2 w-full">
-            <button
-                onClick={onGenerate}
-                disabled={isDisabled}
-                className={`w-full px-4 py-2 rounded-xl font-medium transition
-                    ${isDisabled
-                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                        : "bg-slate-800 text-white hover:bg-slate-700"}`}
-            >
-                {loading ? "Generating..." : "Generate"}
-            </button>
+  return (
+    <div className="flex flex-col gap-y-2 w-full">
+      <button
+        onClick={onGenerate}
+        disabled={isDisabled}
+        className={`w-full px-4 py-2 rounded-xl font-medium transition
+          ${isDisabled
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-slate-800 text-white hover:bg-slate-700"}`}
+      >
+        {loading ? "Generating..." : "Generate"}
+      </button>
 
-            <button
-                onClick={onClear}
-                className="w-full px-4 py-2 rounded-xl bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
-            >
-                Clear
-            </button>
+      <button
+        onClick={onClear}
+        className="w-full px-4 py-2 rounded-xl bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
+      >
+        Clear
+      </button>
 
-            <button
-                onClick={onInsertSample}
-                className="w-full px-4 py-2 rounded-xl bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
-            >
-                Sample Email
-            </button>
-        </div>
-    );
+      <button
+        onClick={onInsertSample}
+        className="w-full px-4 py-2 rounded-xl bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
+      >
+        Sample Email
+      </button>
+    </div>
+  );
 };
 
 export default Controls;
