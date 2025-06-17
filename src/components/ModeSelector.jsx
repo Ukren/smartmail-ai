@@ -1,6 +1,6 @@
-const ModeSelector = ({ value, onModeChange }) => {
+const ModeSelector = ({ value, onChange }) => {
     const MODES = [
-        { label: "improve", value: "improve" },
+        { label: "Improve", value: "improve" },
         { label: "Shorten", value: "shorten" },
         { label: "Expand", value: "expand" },
         { label: "Make formal", value: "formal" },
@@ -8,29 +8,25 @@ const ModeSelector = ({ value, onModeChange }) => {
         { label: "Translate", value: "translate" }
     ];
 
-
     return (
-        <div className="flex flex-col gap-2">
-            <label className="font-medium text-lg">Select mode: </label>
-            <div className="flex flex-wrap gap-2">
-                {MODES.map((mode) => {
-                    const isActive = value === mode.value;
+        <>
+            {MODES.map((mode) => {
+                const isActive = value === mode.value;
 
-                    return (
-                        <button
-                            key={mode.value}
-                            onClick={() => onModeChange(mode.value)}
-                            className={`px-4 py-2 rounded-xl border transition
-                                ${isActive
-                                    ? "bg-blue-600 text-white border-blue-600"
-                                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"}`}
-                        >
-                            {mode.label}
-                        </button>
-                    );
-                })}
-            </div>
-        </div>
+                return (
+                    <button
+                        key={mode.value}
+                        onClick={() => onChange(mode.value)}
+                        className={`px-3 py-1 text-sm rounded-md font-medium transition-all duration-150 backdrop-blur-sm border-2
+	${isActive
+                                ? "bg-zinc-800 text-white border-zinc-800 shadow-inner"
+                                : "bg-gray-200/80 text-gray-700 border-transparent hover:bg-zinc-100 hover:shadow-sm"}`}
+                    >
+                        {mode.label}
+                    </button>
+                );
+            })}
+        </>
     );
 };
 

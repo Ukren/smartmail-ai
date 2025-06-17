@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { generateEmail } from "./api/openai";
 import EmailInput from "./components/EmailInput";
-import ModeSelector from "./components/ModeSelector";
 import Controls from "./components/Controls";
 import OutputBlock from "./components/OutputBlock";
 import Loader from "./components/Loader";
@@ -73,7 +72,12 @@ Your Test Assistant`
       <div className="max-w-4xl mx-auto space-y-4">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
-            <EmailInput email={email} onEmailChange={setEmail} />
+            <EmailInput
+              email={email}
+              onEmailChange={setEmail}
+              mode={mode}
+              onModeChange={setMode}
+            />
           </div>
 
           <div className="w-full md:w-[180px] flex flex-col gap-2 md:pt-10">
@@ -87,8 +91,6 @@ Your Test Assistant`
             />
           </div>
         </div>
-
-        <ModeSelector value={mode} onModeChange={setMode} />
 
         {loading && <Loader />}
         {result && <OutputBlock result={result} />}

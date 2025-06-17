@@ -1,5 +1,3 @@
-import React from "react";
-
 const Controls = ({ email, mode, loading, onGenerate, onClear, onInsertSample }) => {
     const isDisabled = !email || !mode || loading;
 
@@ -11,7 +9,7 @@ const Controls = ({ email, mode, loading, onGenerate, onClear, onInsertSample })
                 className={`w-full px-4 py-2 rounded-xl font-medium transition
                     ${isDisabled
                         ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                        : "bg-blue-600 text-white hover:bg-blue-700"}`}
+                        : "bg-slate-800 text-white hover:bg-slate-700"}`}
             >
                 {loading ? "Generating..." : "Generate"}
             </button>
